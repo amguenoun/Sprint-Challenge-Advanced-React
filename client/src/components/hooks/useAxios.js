@@ -1,16 +1,15 @@
-import { useState } from 'react';
 import axios from 'axios';
 
-const useAxios = (link) => {
-    const [url, setUrl] = useState(link);
+import useLocalStorage from './useLocalStorage';
 
-    const [data, setData] = useState(() => {
-        axios.get(url)
-            .then(response => setData(response.data))
-            .catch(error => console.log('Error: Axios: ', error))
-    })
+const useAxios = (url) => {
+    const [data, setData] = useLocalStorage('data', [])
 
-    return [data, setUrl];
+    axios.get(url)
+        .then(response => setData(response.data))
+        .catch(error => console.log('Error: Axios: ', error))
+
+    return [data];
 }
 
 export default useAxios;

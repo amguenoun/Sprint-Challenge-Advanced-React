@@ -6,7 +6,7 @@ import useAxios from './components/hooks/useAxios';
 import PlayerCard from './components/PlayerCard';
 
 function App() {
-  const [playerData, setUrl] = useAxios(`http://localhost:5000/api/players`);
+  const [playerData] = useAxios(`http://localhost:5000/api/players`);
 
   return (
     <div className="App">
