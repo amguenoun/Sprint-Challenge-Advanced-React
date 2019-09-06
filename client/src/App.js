@@ -5,6 +5,7 @@ import './App.css';
 import useAxios from './components/hooks/useAxios';
 import PlayerCard from './components/PlayerCard';
 import Chart from './components/Chart';
+import ClassComponent from './components/ClassComponent';
 
 function App() {
   const [playerData] = useAxios(`http://localhost:5000/api/players`);
@@ -15,6 +16,7 @@ function App() {
       <Chart barInput={barInput} />
       <div className="card-grid">
         {!playerData ? <h2 className="loading">Loading</h2> : playerData.map(player => <PlayerCard player={player} />)}
+        {/* <ClassComponent /> */}
       </div>
     </div>
   );
