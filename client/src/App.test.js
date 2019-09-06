@@ -10,3 +10,8 @@ test('App contains a header', () => {
   const { getByText } = render(<App />);
   getByText(/world cup player/i)
 })
+
+test('Alex Morgan should show up', async () => {
+  const { findByText } = await render(<App />)
+  findByText(/alex morgan/i)
+})
