@@ -1,9 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from '@testing-library/react';
 import App from './App';
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
-  ReactDOM.unmountComponentAtNode(div);
-});
+test('App renders without crashing', () => {
+  render(<App />);
+})
+
+test('App contains a header', () => {
+  const { getByText } = render(<App />);
+  getByText(/world cup player/i)
+})
+
+test('Alex Morgan should show up', async () => {
+  const { findByText } = await render(<App />)
+  findByText(/alex morgan/i)
+})
